@@ -470,9 +470,11 @@ a {
 
 
 .footer-logo img {
-    height: 70px;
+    height: 100px;
     width: auto;
+    margin-top: -20px; /* pang-usad sa footer logo*/
 }
+
 
 .social-media {
     display: flex;
