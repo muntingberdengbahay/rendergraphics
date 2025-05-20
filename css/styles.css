@@ -696,3 +696,10 @@ a {
     }
 }
 
+.page-arrow.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: not-allowed; /* This gives the "no entry" icon */
+}
+
+
