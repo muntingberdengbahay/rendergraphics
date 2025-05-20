@@ -299,6 +299,9 @@ a {
     transition: all 0.3s ease;
     border: 1px solid var(--tan-medium);
     position: relative;
+    display: flex;                  /* NEW */
+    flex-direction: column;         /* NEW */
+    height: 100%;                   /* NEW */
 }
 
 .product-card:hover {
@@ -328,6 +331,10 @@ a {
 
 .product-info {
     padding: 15px;
+    display: flex;                  /* NEW */
+    flex-direction: column;         /* NEW */
+    flex-grow: 1;                   /* NEW */
+    min-height: 180px;              /* NEW (adjust if needed) */
 }
 
 .product-info h4 {
@@ -335,7 +342,15 @@ a {
     color: var(--brown-dark);
     margin-bottom: 8px;
     font-weight: 600;
+    display: -webkit-box;           /* NEW */
+    -webkit-line-clamp: 2;          /* NEW: Limit to 2 lines */
+    -webkit-box-orient: vertical;   /* NEW */
+    overflow: hidden;               /* NEW */
+    text-overflow: ellipsis;        /* NEW */
+    min-height: 2.8em;             /* NEW: Fixed height for 2 lines */
+    line-height: 1.4;              /* NEW */
 }
+
 
 .product-rating {
     display: flex;
@@ -387,6 +402,7 @@ a {
     font-family: var(--font-secondary);
     font-weight: 500;
     transition: background-color 0.3s;
+    margin-top: auto;              /* NEW: Pushes button to bottom */
 }
 
 .add-to-cart:hover {
@@ -679,3 +695,4 @@ a {
         height: 200px;
     }
 }
+
