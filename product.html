@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Render Graphics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Premium digital art product details">
+</head>
+<body>
+    <!-- Same Header as Index -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo">
+                    </a>
+                </div>
+                
+                <div class="search-bar">
+                    <form action="search.php" method="GET">
+                        <input type="text" placeholder="Search for artwork..." name="query">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#" class="sign-in"><i class="far fa-user"></i> Sign In</a>
+                    <a href="#" class="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="product-detail">
+        <div class="container">
+            <div class="product-gallery">
+                <img id="product-image" src="" alt="" class="product-main-image">
+            </div>
+            
+            <div class="product-info">
+                <h1 id="product-name"></h1>
+                
+                <div class="product-meta">
+                    <div class="product-pricing">
+                        <span id="current-price" class="current-price"></span>
+                        <span id="original-price" class="original-price"></span>
+                        <span id="product-discount" class="product-badge"></span>
+                    </div>
+                    
+                    <p id="product-description" class="product-description"></p>
+                    
+                    <button class="add-to-cart">Add to Cart</button>
+                    
+                    <div class="delivery-info">
+                        <p><i class="fas fa-shipping-fast"></i> Free shipping on orders over ₱5,000</p>
+                        <p><i class="fas fa-undo"></i> 14-day return policy</p>
+                    </div>
+                </div>
+                
+                <!-- Reviews Section -->
+                <div class="reviews-section">
+                    <h2>Customer Reviews</h2>
+                    <div id="reviews-container" class="reviews-container">
+                        <!-- Reviews will be dynamically inserted here -->
+                    </div>
+                    
+                    <form id="review-form" class="review-form">
+                        <h3>Write a Review</h3>
+                        <textarea placeholder="Share your thoughts..." required></textarea>
+                        <button type="submit">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Same Footer as Index -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo">
+                    </div>
+                </div>
+
+                <div class="footer-middle">
+                    <div class="links-column">
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-column">
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Copyright Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-column">
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Help Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Render Graphics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/products.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const product = products[productId];
+
+            if (!product) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Populate Product Data
+            document.title = `${product.name} | Render Graphics`;
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-image').alt = product.name;
+            document.getElementById('current-price').textContent = product.price;
+            document.getElementById('original-price').textContent = product.originalPrice;
+            document.getElementById('product-discount').textContent = product.discount;
+            document.getElementById('product-description').textContent = product.description;
+
+            // Load Reviews
+            const reviewsContainer = document.getElementById('reviews-container');
+            if (product.reviews.length > 0) {
+                product.reviews.forEach(review => {
+                    reviewsContainer.innerHTML += `
+                        <div class="review">
+                            <div class="review-author">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Anonymous</span>
+                            </div>
+                            <p>${review}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                reviewsContainer.innerHTML = '<p>No reviews yet. Be the first!</p>';
+            }
+
+            // Handle Review Submission
+            document.getElementById('review-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const reviewText = e.target.querySelector('textarea').value.trim();
+                if (reviewText) {
+                    product.reviews.push(reviewText);
+                    reviewsContainer.innerHTML = ''; // Clear "No reviews" message if present
+                    
+                    product.reviews.forEach(review => {
+                        reviewsContainer.innerHTML += `
+                            <div class="review">
+                                <div class="review-author">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Anonymous</span>
+                                </div>
+                                <p>${review}</p>
+                            </div>
+                        `;
+                    });
+                    
+                    e.target.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
