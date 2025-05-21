@@ -124,6 +124,11 @@ a {
     color: var(--brown-dark);
 }
 
+.header, .footer {
+  font-family: 'Cormorant Garamond', serif; /* or whatever font you want */
+  color: #333333; /* or your chosen color */
+}
+
 /* Main Content Styles */
 .main-content {
     padding: 40px 0;
@@ -210,6 +215,7 @@ a {
 .show-more {
     text-align: center;
     margin: 30px 0;
+    padding-bottom: 20px;
 }
 
 .btn-show-more {
@@ -250,6 +256,48 @@ a {
     border-color: var(--brown-medium);
 }
 
+.btn-draw {
+    position: relative; /* needed for ::before */
+    border: 1px solid var(--tan-medium);
+    border-radius: 4px;
+    color: var(--brown-dark);
+    font-weight: 600;
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    background: transparent;
+    padding: 10px 20px;
+    cursor: pointer;
+    overflow: hidden; /* to contain the ::before */
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-draw::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--tan-light), var(--cream-medium));
+    z-index: -1;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.btn-draw:hover::before {
+    transform: translateX(0);
+}
+
+.btn-draw:hover {
+    color: var(--brown-dark);
+    border-color: var(--brown-medium);
+}
+
+.filters span {
+  display: block;
+  text-align: center;
+}
+
 .filters {
     display: flex;
     justify-content: space-between;
@@ -272,7 +320,7 @@ a {
 
 /* Featured Products Section */
 .featured-products {
-    margin-top: 50px;
+    margin-top: 10px;
     padding-top: 30px;
     border-top: 1px solid var(--tan-medium);
 }
@@ -403,6 +451,8 @@ a {
     font-weight: 500;
     transition: background-color 0.3s;
     margin-top: auto;              /* NEW: Pushes button to bottom */
+	margin-bottom: 10px; /* NEW: Bottom spacing */
+
 }
 
 .add-to-cart:hover {
@@ -670,6 +720,12 @@ a {
         gap: 8px;
         text-align: center;
     }
+	
+	.sort-select {
+        width: 100%;
+    }
+}
+
 }
 
 @media (max-width: 480px) {
@@ -702,4 +758,151 @@ a {
   cursor: not-allowed; /* This gives the "no entry" icon */
 }
 
+
+/*  05/21/2025 */
+/* Product Detail Page */
+.product-detail {
+    padding: 40px 0;
+}
+
+.product-gallery {
+    margin-bottom: 30px;
+}
+
+.product-main-image {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--tan-medium);
+}
+
+.product-info {
+    padding: 0 20px;
+}
+
+.product-meta {
+    margin: 25px 0;
+}
+
+.delivery-info {
+    margin-top: 20px;
+    color: var(--brown-medium);
+    font-family: var(--font-secondary);
+}
+
+.delivery-info i {
+    margin-right: 8px;
+    color: var(--brown-dark);
+}
+
+.reviews-section {
+    margin-top: 50px;
+    border-top: 1px solid var(--tan-medium);
+    padding-top: 30px;
+}
+
+.review {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--tan-medium);
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.review-author i {
+    font-size: 1.5rem;
+    color: var(--tan-medium);
+    margin-right: 10px;
+}
+
+.review-form {
+    margin-top: 30px;
+}
+
+.review-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--tan-medium);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-family: var(--font-secondary);
+}
+
+/* Review Form Styling */
+.review-form {
+    margin-top: 30px;
+    background: var(--cream-medium);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--tan-medium);
+}
+
+.review-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--tan-medium);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-family: var(--font-secondary);
+    min-height: 100px;
+    background: var(--cream-light);
+}
+
+.submit-review-btn {
+    background: var(--brown-dark);
+    color: var(--cream-light);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.submit-review-btn:hover {
+    background: var(--brown-medium);
+    transform: translateY(-2px);
+}
+
+.submit-review-btn i {
+    font-size: 0.9em;
+}
+
+/* test*/
+
+/* Sort Select Styling */
+.sort-select {
+    padding: 10px 15px;
+    border: 1px solid var(--tan-medium);
+    border-radius: 4px;
+    background-color: var(--cream-light);
+    color: var(--text-dark);
+    font-family: var(--font-secondary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%237f5539' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 32px;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: var(--brown-medium);
+    box-shadow: 0 0 0 2px rgba(159, 107, 83, 0.2);
+}
+
+.sort-select:hover {
+    border-color: var(--brown-dark);
+}
 
