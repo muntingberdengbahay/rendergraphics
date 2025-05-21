@@ -64,27 +64,27 @@
                     <button class="btn-show-more">Show more collections <i class="fas fa-chevron-down"></i></button>
                 </div>
                 
-                <div class="filters">
-                    <div class="filter-item">
-                        <span>25+ unique artworks available</span>
-                    </div>
-                    <div class="filter-item">
-                        <select>
-                            <option>Sort by: Featured</option>
-                            <option>Newest First</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
-                        </select>
-                    </div>
-                </div>
-            </section>
-        </div>
-        
+<div class="filters">
+  <div class="filter-item">
+    <button class="btn-draw" onclick="location.href='indexdrawing.html'">Create Your Own Art</button>
+  </div>
+  <div class="filter-item">
+    <span class="centered-text">25+ unique artworks available</span>
+  </div>
+  <div class="filter-item">
+    <select>
+      <option>Sort by: Featured</option>
+      <option>Newest First</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+    </select>
+  </div>
+</div>
         <section class="featured-products">
             <div class="container">
                 <h3>Featured Artworks</h3>
                 <div class="products-grid">
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="1">
                         <div class="product-badge">-15%</div>
                         <img src="https://i.ibb.co/0pjgtrjr/494825075-1100023805358988-7869408859538142053-n.jpg" alt="Elegant Cat">
                         <div class="product-info">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card"  data-product-id="2">
                         <div class="product-badge">-20%</div>
                         <img src="https://i.ibb.co/DPZsnMjn/494818465-1210702057134480-4556401831919401196-n.jpg" alt="Sophisticated Tom">
                         <div class="product-info">
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="3">
                         <div class="product-badge">-10%</div>
                         <img src="https://i.ibb.co/svDZSgC7/494359212-1221382426332389-7029884708858703133-n.jpg" alt="Lech's Favorite">
                         <div class="product-info">
@@ -153,7 +153,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="4">
                         <div class="product-badge">-25%</div>
                         <img src="https://i.ibb.co/NgcbFcT9/494815821-1388651155503317-4690645572417082193-n.png" alt="C0te Cat">
                         <div class="product-info">
@@ -182,7 +182,7 @@
         <section class="additional-products">
             <div class="container">
                 <div class="products-grid">
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="5">
                         <div class="product-badge">-15%</div>
                         <img src="https://i.ibb.co/2QcvwCm/494360146-1400362487890440-597695839766592943-n.png" alt="Lizard Hunter">
                         <div class="product-info">
@@ -205,7 +205,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="6">
                         <div class="product-badge">-20%</div>
                         <img src="https://i.ibb.co/d4NmfWJG/494362025-1408138887005682-7169189609504204508-n.jpg" alt="Simba">
                         <div class="product-info">
@@ -228,7 +228,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="7">
                         <div class="product-badge">-10%</div>
                         <img src="https://i.ibb.co/ccrcWj4q/494819403-1875332939988552-5442490914021247960-n.jpg" alt="Manyak na posa">
                         <div class="product-info">
@@ -251,7 +251,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="8">
                         <div class="product-badge">-25%</div>
                         <img src="https://i.ibb.co/Q3C9mMn3/494858168-1946943209382697-6665512090529875013-n.jpg" alt="Banal na aso">
                         <div class="product-info">
@@ -288,7 +288,6 @@
 					</div>
 
 
-              
                 </div>
             </div>
         </section>
@@ -330,7 +329,7 @@
 <!-- Social Media (new position) -->
 <div class="footer-social">
     <a href="#"><i class="fab fa-facebook-f"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/render.graphics/"><i class="fab fa-instagram"></i></a>
 </div>
         <!-- Copyright -->
         <div class="footer-bottom">
@@ -339,5 +338,17 @@
     </div>
 </footer>
     <script src="js/main.js"></script>
+	<script>
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', (e) => {
+            // Don't redirect if clicking buttons/links inside the card
+            if (e.target.tagName === 'BUTTON' || e.target.closest('a')) return;
+            
+            const productId = card.dataset.productId;
+            window.location.href = `product.html?id=${productId}`;
+        });
+    });
+</script>
 </body>
 </html>
