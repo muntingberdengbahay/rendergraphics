@@ -11,3 +11,7 @@
   - Research mail system implementation (preferably without buying an API)
 - [ ] Implement a **Search Bar**
   - Should suggest relevant results as characters are typed
+- [ ] Watermark System
+  - Automatic watermark system for uploaded, and to be uploaded arts.
+- [ ] Disable Saving Images (Double Security)
+  - Disable screenshot, disable right click
