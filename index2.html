@@ -61,7 +61,7 @@
             <div class="container">
                 <h3>Featured Artworks</h3>
                 <div class="products-grid">
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="9">
                         <div class="product-badge">-15%</div>
                         <img src="https://i.ibb.co/4RBCSgxs/tshirt-design-admit-it-you-re-smitten.png" alt="Smittenbadoobee">
                         <div class="product-info">
@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card"  data-product-id="10">
                         <div class="product-badge">-20%</div>
                         <img src="https://i.ibb.co/PGVz0TYZ/no-pressure-1.png" alt="No Pressure (LP)">
                         <div class="product-info">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="11">
                         <div class="product-badge">-10%</div>
                         <img src="https://i.ibb.co/cSKhb2Cj/no-pressure-2.png" alt="No Pressure (EP)">
                         <div class="product-info">
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="12">
                         <div class="product-badge">-25%</div>
                         <img src="https://i.ibb.co/fzZwC8ZG/hot-ulligan.png" alt="Hot Mulligan">
                         <div class="product-info">
@@ -154,7 +154,7 @@
                     </div>
                     
                     <!-- 2nd linya ng products-->
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="13">
                         <div class="product-badge">-15%</div>
                         <img src="https://i.ibb.co/5WkSSvdj/tshirt-design-admit-it-you-re-smitten-dark.png" alt="Smitten (Black)">
                         <div class="product-info">
@@ -177,7 +177,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="14">
                         <div class="product-badge">-20%</div>
                         <img src="https://i.ibb.co/RpcfSG0T/finding-beauty-tshirt.png" alt="Finding Beauty">
                         <div class="product-info">
@@ -200,7 +200,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="15">
                         <div class="product-badge">-10%</div>
                         <img src="https://i.ibb.co/Z6Cqcr5L/isolate-and-medicate-mockup.png" alt="Isolate and Medicate">
                         <div class="product-info">
@@ -223,7 +223,7 @@
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-product-id="16">
                         <div class="product-badge">-25%</div>
                         <img src="https://i.ibb.co/G4brT7dS/cat-milf.png" alt="Cat Milf">
                         <div class="product-info">
@@ -312,5 +312,17 @@
     </div>
 </footer>
     <script src="js/main.js"></script>
+	<script>
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', (e) => {
+            // Don't redirect if clicking buttons/links inside the card
+            if (e.target.tagName === 'BUTTON' || e.target.closest('a')) return;
+            
+            const productId = card.dataset.productId;
+            window.location.href = `product.html?id=${productId}`;
+        });
+    });
+</script>
 </body>
 </html>
