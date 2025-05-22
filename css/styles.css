@@ -163,26 +163,6 @@ a {
     font-size: 1.1rem;
 }
 
-.product-image-watermark {
-    position: relative;
-    display: inline-block;
-}
-
-.product-image-watermark img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.product-watermark-overlay {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 40%; /* Adjust as needed */
-    opacity: 0.35; /* Adjust opacity as needed */
-    pointer-events: none;
-}
-
 .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
