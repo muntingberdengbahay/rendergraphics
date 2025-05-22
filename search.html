@@ -10,7 +10,6 @@
     <meta name="description" content="Search digital artwork on Render Graphics">
 </head>
 <body>
-    <!-- Header (copied from your existing files) -->
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -19,12 +18,14 @@
                         <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo">
                     </a>
                 </div>
+                
                 <div class="search-bar">
-                    <!-- We use our new search bar here -->
-                    <input type="text" id="search" autocomplete="off" placeholder="Search for artwork...">
-                    <button id="search-btn"><i class="fas fa-search"></i></button>
-                    <div id="suggestions"></div>
+                    <form action="search.php" method="GET">
+                        <input type="text" placeholder="Search for artwork..." name="query">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
                 </div>
+                
                 <div class="user-actions">
                     <a href="#" class="sign-in"><i class="far fa-user"></i> Sign In</a>
                     <a href="#" class="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
@@ -41,25 +42,52 @@
     </main>
 
     <!-- Footer (copied from your existing files, adjust as needed) -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo" style="height:40px;">
-                    <span>© 2025 Render Graphics. All rights reserved.</span>
+   <footer class="footer">
+    <div class="container">
+        <div class="footer-main">
+            <!-- Left Column - Logo and Social -->
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <a href="index.html">
+                    <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo">
+                    </a>
                 </div>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Contact</a>
+               
+            </div>
+
+            <!-- Middle Columns - Links -->
+            <div class="footer-middle">
+                <div class="links-column">
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
                 </div>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="links-column">
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyright Policy</a></li>
+                    </ul>
+                </div>
+                <div class="links-column">
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </footer>
+<!-- Social Media (new position) -->
+<div class="footer-social">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/render.graphics/"><i class="fab fa-instagram"></i></a>
+</div>
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Render Graphics. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
     <script src="js/products.js"></script>
     <script src="js/search.js"></script>
 </body>
