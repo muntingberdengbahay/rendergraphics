@@ -4,7 +4,9 @@
 - [✅] Add a function to **sort arts by category**
   - e.g., filter to show only _Digital Design Tees_
 - [✅] Make the **footer logo** redirect to the **home page** (same as banner logo)
+- [✅] Add a function for every product with their ID number
 - [✅] Fix the **product image size** (currently too large and affects quality)
+- [✅] Change **"Free Shipping"** to **"Stars Function"**
 - [ ] Implement **Add to Cart** feature
   - Only works if user is **registered/logged in**
 - [ ] Add **Sign In / Register** functionality
