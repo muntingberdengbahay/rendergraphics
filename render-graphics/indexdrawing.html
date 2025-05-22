@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drawing App with Layers & Tools</title>
+
+  <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/stylepad.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="app-container">
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html">
+            <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo" />
+          </a>
+        </div>
+                <div class="user-actions">
+                    <a href="javascript:void(0)" class="sign-in"><i class="far fa-user"></i> Sign In</a>
+                    <a href="#" class="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+                </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="tools-board">
+      <div class="layers">
+        <h3>Layers</h3>
+        <ul class="layers-list"></ul>
+        <button id="add-layer">Add Layer</button>
+        <button id="delete-layer">Delete Layer</button>
+      </div>
+
+      <div class="tools">
+        <h3>Tools</h3>
+        <div class="tool-options">
+          <button class="tool-btn active" data-tool="pen">Pen</button>
+          <button class="tool-btn" data-tool="brush">Brush</button>
+        </div>
+        <div class="tool-options">
+          <button class="tool-btn" data-tool="eraser">Eraser</button>
+          <button class="tool-btn" data-tool="bucket">Bucket</button>
+        </div>
+        <label for="color-picker">Color:</label>
+        <input type="color" id="color-picker" value="#000000" />
+
+        <label for="size-slider">Size:</label>
+        <input
+          type="range"
+          id="size-slider"
+          min="1"
+          max="50"
+          value="4"
+          step="1"
+        />
+      </div>
+
+      <div class="buttons">
+          <button class="undo-btn">Undo</button>
+          <button class="redo-btn">Redo</button>
+      </div>
+      <div class="buttons">
+        <button class="clear-canvas">Clear</button>
+        <button class="save-img">Save</button>
+      </div>
+    </section>
+
+    <section class="drawing-board"></section>
+  </div>
+  
+  <footer class="footer">
+    <div class="app-container">
+      <div class="footer-main">
+        <!-- Left Column - Logo and Social -->
+        <div class="footer-left">
+        <div class="logo">
+          <a href="index.html">
+            <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo" />
+          </a>
+        </div>
+        </div>
+
+        <!-- Middle Columns - Links -->
+        <div class="footer-middle">
+          <div class="links-column">
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Copyright Policy</a></li>
+            </ul>
+          </div>
+          <div class="links-column">
+            <ul>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Help Center</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Social Media (new position) -->
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/render.graphics/"><i class="fab fa-instagram"></i></a>
+      </div>
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        <p>© 2025 Render Graphics. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/scriptpad.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/auth-modal.js"></script>
+      <script>
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+                // Don't redirect if clicking buttons/links inside the card
+                if (e.target.tagName === 'BUTTON' || e.target.closest('a')) return;
+
+                const productId = card.dataset.productId;
+                window.location.href = `product.html?id=${productId}`;
+            });
+        });
+</script>
+</body>
+</html>
