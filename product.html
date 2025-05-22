@@ -56,7 +56,16 @@
                     <button class="add-to-cart">Add to Cart</button>
                     
                     <div class="delivery-info">
-                        <p><i class="fas fa-shipping-fast"></i> Free shipping on orders over ₱5,000</p>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="far fa-star" data-index="1"></i>
+                                    <i class="far fa-star" data-index="2"></i>
+                                    <i class="far fa-star" data-index="3"></i>
+                                    <i class="far fa-star" data-index="4"></i>
+                                    <i class="far fa-star" data-index="5"></i>
+                                </div>
+                                <span class="rating-count">(0)</span>
+                            </div>
                         <p><i class="fas fa-undo"></i> 14-day return policy</p>
                     </div>
                 </div>
@@ -68,11 +77,13 @@
                         <!-- Reviews will be dynamically inserted here -->
                     </div>
                     
-                    <form id="review-form" class="review-form">
-                        <h3>Write a Review</h3>
-                        <textarea placeholder="Share your thoughts..." required></textarea>
-                        <button type="submit">Submit Review</button>
-                    </form>
+                   <form id="review-form" class="review-form">
+						<h3>Write a Review</h3>
+						<textarea placeholder="Share your thoughts..." required></textarea>
+							<button type="submit" class="submit-review-btn">
+								<i class="fas fa-pen-fancy"></i> Post Review
+							</button>
+					</form>
                 </div>
             </div>
         </div>
@@ -83,9 +94,11 @@
         <div class="container">
             <div class="footer-main">
                 <div class="footer-left">
-                    <div class="footer-logo">
-                        <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo">
-                    </div>
+                <div class="footer-logo">
+                    <a href="index.html">
+                    <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo">
+                    </a>
+                </div>
                 </div>
 
                 <div class="footer-middle">
