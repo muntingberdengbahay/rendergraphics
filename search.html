@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Render Graphics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Search digital artwork on Render Graphics">
+</head>
+<body>
+    <!-- Header (copied from your existing files) -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo">
+                    </a>
+                </div>
+                <div class="search-bar">
+                    <!-- We use our new search bar here -->
+                    <input type="text" id="search" autocomplete="off" placeholder="Search for artwork...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                    <div id="suggestions"></div>
+                </div>
+                <div class="user-actions">
+                    <a href="#" class="sign-in"><i class="far fa-user"></i> Sign In</a>
+                    <a href="#" class="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h2>Search Results</h2>
+            <div id="search-result" class="search-result"></div>
+        </div>
+    </main>
+
+    <!-- Footer (copied from your existing files, adjust as needed) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo" style="height:40px;">
+                    <span>© 2025 Render Graphics. All rights reserved.</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/products.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
