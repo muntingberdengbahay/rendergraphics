@@ -359,5 +359,23 @@
         });
     });
 </script>
+<div class="image-wrapper">
+  <img src="your-image.jpg" alt="Protected" />
+  <div class="overlay"></div>
+</div>
+<script>
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    img.setAttribute('draggable', 'false');
+    img.addEventListener('mousedown', e => e.preventDefault());
+  });
+});
+</script>
 </body>
 </html>
