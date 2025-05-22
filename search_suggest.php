@@ -3,7 +3,6 @@ $q = $_GET['q'] ?? '';
 $suggestions = [];
 if ($q !== '') {
     $items = [
-        $products = [
     ['id' => 1, 'name' => 'Elegant Cat'],
     ['id' => 2, 'name' => 'Sophisticated Tom'],
     ['id' => 3, 'name' => "Lech's Favorite"],
