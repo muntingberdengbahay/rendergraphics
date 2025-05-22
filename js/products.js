@@ -1,3 +1,88 @@
+
+
+// For product cards (multiple products)
+if (window.location.pathname.includes("product.html")) {
+    document.querySelectorAll('.product-card').forEach(card => {
+        const stars = card.querySelectorAll('.stars i');
+        let currentRating = 0;
+
+        stars.forEach((star, index) => {
+            star.addEventListener('mouseover', () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle('fas', i <= index);
+                    s.classList.toggle('far', i > index);
+                });
+            });
+
+            star.addEventListener('mouseout', () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle('fas', i < currentRating);
+                    s.classList.toggle('far', i >= currentRating);
+                });
+            });
+
+            star.addEventListener('click', (event) => {
+                event.stopPropagation();
+                currentRating = index + 1;
+                stars.forEach((s, i) => {
+                    s.classList.toggle('fas', i < currentRating);
+                    s.classList.toggle('far', i >= currentRating);
+                });
+                card.querySelector('.rating-count').textContent = `(${currentRating})`;
+            });
+        });
+    });
+}
+
+// For single product detail (only one)
+const detailStars = document.querySelectorAll('main.product-detail .stars i');
+let detailCurrentRating = 0;
+
+detailStars.forEach((star, index) => {
+    star.addEventListener('mouseover', () => {
+        detailStars.forEach((s, i) => {
+            s.classList.toggle('fas', i <= index);
+            s.classList.toggle('far', i > index);
+        });
+    });
+
+    star.addEventListener('mouseout', () => {
+        detailStars.forEach((s, i) => {
+            s.classList.toggle('fas', i < detailCurrentRating);
+            s.classList.toggle('far', i >= detailCurrentRating);
+        });
+    });
+
+    star.addEventListener('click', (event) => {
+        event.stopPropagation();
+        detailCurrentRating = index + 1;
+        detailStars.forEach((s, i) => {
+            s.classList.toggle('fas', i < detailCurrentRating);
+            s.classList.toggle('far', i >= detailCurrentRating);
+        });
+        document.querySelector('main.product-detail .rating-count').textContent = `(${detailCurrentRating})`;
+    });
+});
+
+// products.js
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+
+    const allProducts = document.querySelectorAll('.product-card');
+
+    if (category) {
+        allProducts.forEach(card => {
+            const productCategory = card.getAttribute('data-category');
+            if (productCategory === category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+});
+
 // js/products.js
 const products = {
    1: {
@@ -219,5 +304,186 @@ const products = {
     discount: "-25%",
     description: "Digital portrait inspired by Bulacan State University’s branch campus.",
     reviews: []
+},
+25: {
+  name: "Bea Baduday 1",
+  image: "https://i.ibb.co/XrkyfdDq/Bea-Baduday.jpg",
+  price: "₱4,500",
+  originalPrice: "₱9,000",
+  discount: "-50%",
+  description: "Beabadoobee tour poster",
+  reviews: []
+},
+26: {
+  name: "Bea Baduday 2",
+  image: "https://i.ibb.co/VYzJSy3p/Bea-Baduday2.jpg",
+  price: "₱2,400",
+  originalPrice: "₱6,000",
+  discount: "-60%",
+  description: "Indie pop vibes from Beabadoobee’s tour.",
+  reviews: []
+},
+27: {
+  name: "Bea Baduday 3",
+  image: "https://i.ibb.co/HpknrHQ9/Bea-Baduday-3.jpg",
+  price: "₱3,000",
+  originalPrice: "₱7,500",
+  discount: "-60%",
+  description: "Soft grunge aesthetic from Bea’s concert set.",
+  reviews: []
+},
+28: {
+  name: "Apple ni Bea",
+  image: "https://i.ibb.co/ynHNhR1R/Apple.jpg",
+  price: "₱2,200",
+  originalPrice: "₱5,500",
+  discount: "-60%",
+  description: "A cheeky nod to Beabadoobee's playful side.",
+  reviews: []
+},
+29: {
+  name: "TV Girl 1",
+  image: "https://i.ibb.co/HDh7dXGY/TV-Girl.jpg",
+  price: "₱3,200",
+  originalPrice: "₱6,400",
+  discount: "-50%",
+  description: "Retro dream pop poster from TV Girl.",
+  reviews: []
+},
+30: {
+  name: "TV Girl 2",
+  image: "https://i.ibb.co/KptsXwKy/TV-Girl-2.jpg",
+  price: "₱1,800",
+  originalPrice: "₱4,500",
+  discount: "-60%",
+  description: "Vintage aesthetic for nostalgic souls.",
+  reviews: []
+},
+31: {
+  name: "Perks of being a Wallflower",
+  image: "https://i.ibb.co/20TGDY4f/Wallflower.jpg",
+  price: "₱3,600",
+  originalPrice: "₱6,000",
+  discount: "-40%",
+  description: "Iconic film poster for book lovers.",
+  reviews: []
+},
+32: {
+  name: "The End of the F***king World",
+  image: "https://i.ibb.co/SwPPn1yn/The-End.jpg",
+  price: "₱3,300",
+  originalPrice: "₱6,600",
+  discount: "-50%",
+  description: "Dark teen drama in artistic layout.",
+  reviews: []
+},
+33: {
+  name: "Clairo",
+  image: "https://i.ibb.co/dJLdRgZK/Clairo.jpg",
+  price: "₱2,700",
+  originalPrice: "₱6,000",
+  discount: "-55%",
+  description: "Lo-fi bedroom pop poster design.",
+  reviews: []
+},
+34: {
+  name: "Chappell Roan 1",
+  image: "https://i.ibb.co/VWYGCRFG/Chappell.jpg",
+  price: "₱2,400",
+  originalPrice: "₱6,000",
+  discount: "-60%",
+  description: "Theatrical flair from rising alt-pop star.",
+  reviews: []
+},
+35: {
+  name: "Chappell Roan 2",
+  image: "https://i.ibb.co/jkHt7m0f/Chappell-2.jpg",
+  price: "₱3,000",
+  originalPrice: "₱6,000",
+  discount: "-50%",
+  description: "Bold, colorful expression from Chappell.",
+  reviews: []
+},
+36: {
+  name: "Mitski",
+  image: "https://i.ibb.co/bDmzwz0/Mitski.jpg",
+  price: "₱2,200",
+  originalPrice: "₱5,500",
+  discount: "-60%",
+  description: "Emotional intensity in every pixel.",
+  reviews: []
+},
+37: {
+  name: "500 Days of Summer",
+  image: "https://i.ibb.co/B2X2dpjh/Summer.jpg",
+  price: "₱2,000",
+  originalPrice: "₱4,000",
+  discount: "-50%",
+  description: "Whimsical and melancholic film classic.",
+  reviews: []
+},
+38: {
+  name: "Juno 1",
+  image: "https://i.ibb.co/99M3SSwK/Juno.jpg",
+  price: "₱2,400",
+  originalPrice: "₱6,000",
+  discount: "-60%",
+  description: "Quirky teen spirit in warm hues.",
+  reviews: []
+},
+39: {
+  name: "Juno 2",
+  image: "https://i.ibb.co/93qGb4mB/Juno-2.jpg",
+  price: "₱2,700",
+  originalPrice: "₱5,400",
+  discount: "-50%",
+  description: "Playful yet deep like the film itself.",
+  reviews: []
+},
+40: {
+  name: "Twilight Saga",
+  image: "https://i.ibb.co/bgcCBd1g/Twilight.jpg",
+  price: "₱3,000",
+  originalPrice: "₱6,000",
+  discount: "-50%",
+  description: "Eternal love and dramatic glances.",
+  reviews: []
+},
+41: {
+  name: "Lady Bird",
+  image: "https://i.ibb.co/pj4FKwdd/Lady-Bird.jpg",
+  price: "₱2,000",
+  originalPrice: "₱5,000",
+  discount: "-60%",
+  description: "Coming-of-age charm from Lady Bird.",
+  reviews: []
+},
+42: {
+  name: "The Beatles",
+  image: "https://i.ibb.co/99pdcqjg/The-Beatles.jpg",
+  price: "₱3,600",
+  originalPrice: "₱6,000",
+  discount: "-40%",
+  description: "Classic band poster for timeless fans.",
+  reviews: []
+},
+43: {
+  name: "Sabrina Karpintero",
+  image: "https://i.ibb.co/KcWsL8cN/Sabrina.jpg",
+  price: "₱2,100",
+  originalPrice: "₱5,250",
+  discount: "-60%",
+  description: "Pop princess with a bold visual flair.",
+  reviews: []
+},
+44: {
+  name: "Take A Bite",
+  image: "https://i.ibb.co/Z1XvzpnP/Take-A-Bite.jpg",
+  price: "₱2,800",
+  originalPrice: "₱7,000",
+  discount: "-60%",
+  description: "Tantalizing cover art with attitude.",
+  reviews: []
 }
+
 };
