@@ -64,6 +64,20 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
+document.getElementById('search').addEventListener('input', function() {
+  var query = this.value;
+  if(query.length < 2) {
+    document.getElementById('suggestions').innerHTML = "";
+    return;
+  }
+  fetch('search_suggest.php?q=' + encodeURIComponent(query))
+    .then(response => response.json())
+    .then(data => {
+      let suggestions = data.map(item => `<div>${item}</div>`).join('');
+      document.getElementById('suggestions').innerHTML = suggestions;
+    });
+});
+
 
 // product.js - Add this at the bottom
 
