@@ -1,4 +1,4 @@
-## 🛠️ Features To Implement / Fix (kalbo)
+## 🛠️ Features To Implement / Fix
 
 - [✅] Remove **"Show More Collections"**
 - [✅] Add a function to **sort arts by category**

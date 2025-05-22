@@ -24,11 +24,10 @@
             <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo" />
           </a>
         </div>
-
-        <div class="user-actions">
-          <a href="#" class="sign-in"><i class="far fa-user"></i> Sign In</a>
-          <a href="#" class="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
-        </div>
+                <div class="user-actions">
+                    <a href="javascript:void(0)" class="sign-in"><i class="far fa-user"></i> Sign In</a>
+                    <a href="#" class="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+                </div>
       </div>
     </div>
   </header>
@@ -84,9 +83,11 @@
       <div class="footer-main">
         <!-- Left Column - Logo and Social -->
         <div class="footer-left">
-          <div class="footer-logo">
+        <div class="logo">
+          <a href="index.html">
             <img src="https://i.ibb.co/60pWczgJ/495264830-710751594813265-5980362639866073055-n.png" alt="Render Graphics Logo" />
-          </div>
+          </a>
+        </div>
         </div>
 
         <!-- Middle Columns - Links -->
@@ -123,6 +124,19 @@
     </div>
   </footer>
   <script src="js/scriptpad.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/auth-modal.js"></script>
+      <script>
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+                // Don't redirect if clicking buttons/links inside the card
+                if (e.target.tagName === 'BUTTON' || e.target.closest('a')) return;
+
+                const productId = card.dataset.productId;
+                window.location.href = `product.html?id=${productId}`;
+            });
+        });
+</script>
 </body>
-<script src="js/security.js"></script>
 </html>
