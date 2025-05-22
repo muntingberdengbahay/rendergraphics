@@ -29,6 +29,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Disable right-click (context menu) everywhere
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+// Disable dragging images
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    img.setAttribute('draggable', 'false');
+    img.addEventListener('mousedown', e => e.preventDefault());
+  });
+});
+
+// Optional: Blur on PrintScreen key press
+window.addEventListener("keyup", function(e) {
+  if (e.key === "PrintScreen") {
+    document.body.style.filter = "blur(10px)";
+    setTimeout(() => {
+      document.body.style.filter = "";
+    }, 1000);
+  }
+});
+
+// Disable common keyboard shortcuts (Ctrl+S, Ctrl+U, Ctrl+C, Ctrl+Shift+I, F12)
+document.addEventListener('keydown', function(e) {
+  if (
+    (e.ctrlKey && ['s', 'u', 'c'].includes(e.key.toLowerCase())) ||
+    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') ||
+    e.key === 'F12'
+  ) {
+    e.preventDefault();
+  }
+});
+
 
 // product.js - Add this at the bottom
 
