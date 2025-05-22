@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
 // product.js - Add this at the bottom
 
 // Sorting Functionality
