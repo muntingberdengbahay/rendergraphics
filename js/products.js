@@ -83,6 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+const productImageHtml = `
+  <div class="product-image-watermark">
+    <img src="${product.image}" alt="${product.name}">
+    <img class="product-watermark-overlay" src="https://i.ibb.co/zhsNJnbJ/watermark15.png" alt="Watermark">
+  </div>
+`;
+
 // js/products.js
 const products = {
    1: {
