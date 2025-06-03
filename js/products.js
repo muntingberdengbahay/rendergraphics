@@ -83,11 +83,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function syncWatermarkSize() {
+  const productImg = document.getElementById('product-image');
+  const watermark = document.querySelector('.watermark-image');
+  
+  if (productImg && watermark) {
+    // Match watermark dimensions to product image
+    watermark.style.width = productImg.offsetWidth + 'px';
+    watermark.style.height = productImg.offsetHeight + 'px';
+  }
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', function() {
+  const productImg = document.getElementById('product-image');
+  
+  // Run when image loads and on resize
+  productImg.addEventListener('load', syncWatermarkSize);
+  window.addEventListener('resize', syncWatermarkSize);
+  
+  // Initial sync (in case image is cached)
+  if (productImg.complete) syncWatermarkSize();
+});
+
+
+
 // js/products.js
 const products = {
    1: {
     name: "Elegant Cat",
-    image: "https://i.ibb.co/0pjgtrjr/494825075-1100023805358988-7869408859538142053-n.jpg ",
+    image: "watermarked_image.php?img=Elegant Cat.jpg",
     price: "₱4,250",
     originalPrice: "₱5,000",
     discount: "-15%",
@@ -96,7 +121,7 @@ const products = {
 },
 2: {
     name: "Sophisticated Tom",
-    image: "https://i.ibb.co/DPZsnMjn/494818465-1210702057134480-4556401831919401196-n.jpg ",
+    image: "watermarked_image.php?img=Sophisticated Tom.jpg",
     price: "₱5,600",
     originalPrice: "₱7,000",
     discount: "-20%",
@@ -105,7 +130,7 @@ const products = {
 },
 3: {
     name: "Lech's Favorite",
-    image: "https://i.ibb.co/svDZSgC7/494359212-1221382426332389-7029884708858703133-n.jpg ",
+    image: "watermarked_image.php?img=Lech_s Favorite.jpg",
     price: "₱3,150",
     originalPrice: "₱3,500",
     discount: "-10%",
@@ -114,7 +139,7 @@ const products = {
 },
 4: {
     name: "C0te Cat",
-    image: "https://i.ibb.co/NgcbFcT9/494815821-1388651155503317-4690645572417082193-n.png ",
+    image: "watermarked_image.php?img=C0te Cat.png",
     price: "₱6,750",
     originalPrice: "₱9,000",
     discount: "-25%",
@@ -123,7 +148,7 @@ const products = {
 },
 5: {
     name: "Lizard Hunter",
-    image: "https://i.ibb.co/2QcvwCm/494360146-1400362487890440-597695839766592943-n.png ",
+    image: "watermarked_image.php?img=Lizard Hunter.png ",
     price: "₱4,250",
     originalPrice: "₱5,000",
     discount: "-15%",
@@ -132,7 +157,7 @@ const products = {
 },
 6: {
     name: "Simba",
-    image: "https://i.ibb.co/d4NmfWJG/494362025-1408138887005682-7169189609504204508-n.jpg ",
+    image: "watermarked_image.php?img=Simba.jpg",
     price: "₱5,600",
     originalPrice: "₱7,000",
     discount: "-20%",
@@ -141,7 +166,7 @@ const products = {
 },
 7: {
     name: "Manyak na posa",
-    image: "https://i.ibb.co/ccrcWj4q/494819403-1875332939988552-5442490914021247960-n.jpg ",
+    image: "watermarked_image.php?img=Manyak na posa.jpg",
     price: "₱3,150",
     originalPrice: "₱3,500",
     discount: "-10%",
@@ -150,7 +175,7 @@ const products = {
 },
 8: {
     name: "Banal na aso",
-    image: "https://i.ibb.co/Q3C9mMn3/494858168-1946943209382697-6665512090529875013-n.jpg ",
+    image: "watermarked_image.php?img=Banal na aso.jpg",
     price: "₱6,750",
     originalPrice: "₱9,000",
     discount: "-25%",
@@ -161,7 +186,7 @@ const products = {
 // PAGE 2 PRODUCTS (IDs 9-16)
 9: {
     name: "Smittenbadoobee",
-    image: "https://i.ibb.co/4RBCSgxs/tshirt-design-admit-it-you-re-smitten.png ",
+    image: "watermarked_image.php?img=Smittenbadoobee.png",
     price: "₱4,250",
     originalPrice: "₱5,000",
     discount: "-15%",
@@ -170,7 +195,7 @@ const products = {
 },
 10: {
     name: "No Pressure (LP)",
-    image: "https://i.ibb.co/PGVz0TYZ/no-pressure-1.png ",
+    image: "watermarked_image.php?img=No Pressure (LP).png",
     price: "₱5,600",
     originalPrice: "₱7,000",
     discount: "-20%",
@@ -179,7 +204,7 @@ const products = {
 },
 11: {
     name: "No Pressure (EP)",
-    image: "https://i.ibb.co/cSKhb2Cj/no-pressure-2.png ",
+    image: "watermarked_image.php?img=No Pressure (EP).png",
     price: "₱3,150",
     originalPrice: "₱3,500",
     discount: "-10%",
@@ -188,7 +213,7 @@ const products = {
 },
 12: {
     name: "Hot Mulligan",
-    image: "https://i.ibb.co/fzZwC8ZG/hot-ulligan.png ",
+    image: "watermarked_image.php?img=Hot Mulligan.png",
     price: "₱6,750",
     originalPrice: "₱9,000",
     discount: "-25%",
@@ -197,7 +222,7 @@ const products = {
 },
 13: {
     name: "Smitten (Black)",
-    image: "https://i.ibb.co/5WkSSvdj/tshirt-design-admit-it-you-re-smitten-dark.png ",
+    image: "watermarked_image.php?img=Smitten (Black).png",
     price: "₱4,250",
     originalPrice: "₱5,000",
     discount: "-15%",
@@ -206,7 +231,7 @@ const products = {
 },
 14: {
     name: "Finding Beauty in Negative Spaces",
-    image: "https://i.ibb.co/RpcfSG0T/finding-beauty-tshirt.png ",
+    image: "watermarked_image.php?img=Finding Beauty in Negative Spaces.png",
     price: "₱5,600",
     originalPrice: "₱7,000",
     discount: "-20%",
@@ -215,7 +240,7 @@ const products = {
 },
 15: {
     name: "Isolate and Medicate",
-    image: "https://i.ibb.co/Z6Cqcr5L/isolate-and-medicate-mockup.png ",
+    image: "watermarked_image.php?img=Isolate and Medicate.png",
     price: "₱3,150",
     originalPrice: "₱3,500",
     discount: "-10%",
@@ -224,7 +249,7 @@ const products = {
 },
 16: {
     name: "Cat Milf",
-    image: "https://i.ibb.co/G4brT7dS/cat-milf.png ",
+    image: "watermarked_image.php?img=Cat Milf.png",
     price: "₱6,750",
     originalPrice: "₱9,000",
     discount: "-25%",
@@ -235,7 +260,7 @@ const products = {
 // PAGE 3 PRODUCTS (IDs 17-24)
 17: {
     name: "Shit Eater",
-    image: "https://i.ibb.co/pvt33FyH/shit-eater.jpg ",
+    image: "watermarked_image.php?img=Shit Eater.jpg ",
     price: "₱4,250",
     originalPrice: "₱5,000",
     discount: "-15%",
@@ -244,7 +269,7 @@ const products = {
 },
 18: {
     name: "Cat and Criminal",
-    image: "https://i.ibb.co/twWFWYq4/cat-and-criminal.jpg ",
+    image: "watermarked_image.php?img=Cat and Criminal.jpg",
     price: "₱5,600",
     originalPrice: "₱7,000",
     discount: "-20%",
@@ -253,7 +278,7 @@ const products = {
 },
 19: {
     name: "Single Braincell Car",
-    image: "https://i.ibb.co/4nGr2Ztf/1-braincell-car.jpg ",
+    image: "watermarked_image.php?img=Single Braincell Car.jpg",
     price: "₱3,150",
     originalPrice: "₱3,500",
     discount: "-10%",
@@ -262,7 +287,7 @@ const products = {
 },
 20: {
     name: "Slipper Muncher",
-    image: "https://i.ibb.co/5WBk9FF1/slipper-muncher.jpg ",
+    image: "watermarked_image.php?img=Slipper Muncher.jpg",
     price: "₱6,750",
     originalPrice: "₱9,000",
     discount: "-25%",
@@ -271,7 +296,7 @@ const products = {
 },
 21: {
     name: "Posang Mabantot",
-    image: "https://i.ibb.co/v6fCp2N7/posang-mabantot.jpg ",
+    image: "watermarked_image.php?img=Posang Mabantot.jpg",
     price: "₱4,250",
     originalPrice: "₱5,000",
     discount: "-15%",
@@ -280,7 +305,7 @@ const products = {
 },
 22: {
     name: "Ma Ano Ulam?",
-    image: "https://i.ibb.co/nsnP4M8Q/ma-ano-ulam.png ",
+    image: "watermarked_image.php?img=Ma Ano Ulam.png",
     price: "₱5,600",
     originalPrice: "₱7,000",
     discount: "-20%",
@@ -289,7 +314,7 @@ const products = {
 },
 23: {
     name: "Kung Fu Mulutan",
-    image: "https://i.ibb.co/DPZwfj34/kung-portrait.png ",
+    image: "watermarked_image.php?img=Kung Fu Mulutan.png",
     price: "₱3,150",
     originalPrice: "₱3,500",
     discount: "-10%",
@@ -298,7 +323,7 @@ const products = {
 },
 24: {
     name: "BulSU Sarmiento Branch",
-    image: "https://i.ibb.co/MxfjbGRR/sarming-portrait-try.png ",
+    image: "watermarked_image.php?img=BulSU Sarmiento Branch.png",
     price: "₱6,750",
     originalPrice: "₱9,000",
     discount: "-25%",
@@ -307,7 +332,7 @@ const products = {
 },
 25: {
   name: "Bea Baduday 1",
-  image: "https://i.ibb.co/XrkyfdDq/Bea-Baduday.jpg",
+  image: "watermarked_image.php?img=Bea Baduday 1.jpg",
   price: "₱4,500",
   originalPrice: "₱9,000",
   discount: "-50%",
@@ -316,7 +341,7 @@ const products = {
 },
 26: {
   name: "Bea Baduday 2",
-  image: "https://i.ibb.co/VYzJSy3p/Bea-Baduday2.jpg",
+  image: "watermarked_image.php?img=Bea Baduday2.jpg",
   price: "₱2,400",
   originalPrice: "₱6,000",
   discount: "-60%",
@@ -325,7 +350,7 @@ const products = {
 },
 27: {
   name: "Bea Baduday 3",
-  image: "https://i.ibb.co/HpknrHQ9/Bea-Baduday-3.jpg",
+  image: "watermarked_image.php?img=Bea Baduday 3.jpg",
   price: "₱3,000",
   originalPrice: "₱7,500",
   discount: "-60%",
@@ -334,7 +359,7 @@ const products = {
 },
 28: {
   name: "Apple ni Bea",
-  image: "https://i.ibb.co/ynHNhR1R/Apple.jpg",
+  image: "watermarked_image.php?img=Apple ni Bea.jpg",
   price: "₱2,200",
   originalPrice: "₱5,500",
   discount: "-60%",
@@ -343,7 +368,7 @@ const products = {
 },
 29: {
   name: "TV Girl 1",
-  image: "https://i.ibb.co/HDh7dXGY/TV-Girl.jpg",
+  image: "watermarked_image.php?img=TV Girl 1.jpg",
   price: "₱3,200",
   originalPrice: "₱6,400",
   discount: "-50%",
@@ -352,7 +377,7 @@ const products = {
 },
 30: {
   name: "TV Girl 2",
-  image: "https://i.ibb.co/KptsXwKy/TV-Girl-2.jpg",
+  image: "watermarked_image.php?img=TV Girl 2.jpg",
   price: "₱1,800",
   originalPrice: "₱4,500",
   discount: "-60%",
@@ -361,7 +386,7 @@ const products = {
 },
 31: {
   name: "Perks of being a Wallflower",
-  image: "https://i.ibb.co/20TGDY4f/Wallflower.jpg",
+  image: "watermarked_image.php?img=Perks of being a Wallflower.jpg",
   price: "₱3,600",
   originalPrice: "₱6,000",
   discount: "-40%",
@@ -370,7 +395,7 @@ const products = {
 },
 32: {
   name: "The End of the F***king World",
-  image: "https://i.ibb.co/SwPPn1yn/The-End.jpg",
+  image: "watermarked_image.php?img=The End of the Fking World.jpg",
   price: "₱3,300",
   originalPrice: "₱6,600",
   discount: "-50%",
@@ -379,7 +404,7 @@ const products = {
 },
 33: {
   name: "Clairo",
-  image: "https://i.ibb.co/dJLdRgZK/Clairo.jpg",
+  image: "watermarked_image.php?img=Clairo.jpg",
   price: "₱2,700",
   originalPrice: "₱6,000",
   discount: "-55%",
@@ -388,7 +413,7 @@ const products = {
 },
 34: {
   name: "Chappell Roan 1",
-  image: "https://i.ibb.co/VWYGCRFG/Chappell.jpg",
+  image: "watermarked_image.php?img=Chappell Roan 1.jpg",
   price: "₱2,400",
   originalPrice: "₱6,000",
   discount: "-60%",
@@ -397,7 +422,7 @@ const products = {
 },
 35: {
   name: "Chappell Roan 2",
-  image: "https://i.ibb.co/jkHt7m0f/Chappell-2.jpg",
+  image: "watermarked_image.php?img=Chappell Roan 2.jpg",
   price: "₱3,000",
   originalPrice: "₱6,000",
   discount: "-50%",
@@ -406,7 +431,7 @@ const products = {
 },
 36: {
   name: "Mitski",
-  image: "https://i.ibb.co/bDmzwz0/Mitski.jpg",
+  image: "watermarked_image.php?img=Mitski.jpg",
   price: "₱2,200",
   originalPrice: "₱5,500",
   discount: "-60%",
@@ -415,7 +440,7 @@ const products = {
 },
 37: {
   name: "500 Days of Summer",
-  image: "https://i.ibb.co/B2X2dpjh/Summer.jpg",
+  image: "watermarked_image.php?img=500 Days of Summer.jpg",
   price: "₱2,000",
   originalPrice: "₱4,000",
   discount: "-50%",
@@ -424,7 +449,7 @@ const products = {
 },
 38: {
   name: "Juno 1",
-  image: "https://i.ibb.co/99M3SSwK/Juno.jpg",
+  image: "watermarked_image.php?img=Juno 1.jpg",
   price: "₱2,400",
   originalPrice: "₱6,000",
   discount: "-60%",
@@ -433,7 +458,7 @@ const products = {
 },
 39: {
   name: "Juno 2",
-  image: "https://i.ibb.co/93qGb4mB/Juno-2.jpg",
+  image: "watermarked_image.php?img=Juno 2.jpg",
   price: "₱2,700",
   originalPrice: "₱5,400",
   discount: "-50%",
@@ -442,7 +467,7 @@ const products = {
 },
 40: {
   name: "Twilight Saga",
-  image: "https://i.ibb.co/bgcCBd1g/Twilight.jpg",
+  image: "watermarked_image.php?img=Twilight Saga.jpg",
   price: "₱3,000",
   originalPrice: "₱6,000",
   discount: "-50%",
@@ -451,7 +476,7 @@ const products = {
 },
 41: {
   name: "Lady Bird",
-  image: "https://i.ibb.co/pj4FKwdd/Lady-Bird.jpg",
+  image: "watermarked_image.php?img=Lady Bird.jpg",
   price: "₱2,000",
   originalPrice: "₱5,000",
   discount: "-60%",
@@ -460,7 +485,7 @@ const products = {
 },
 42: {
   name: "The Beatles",
-  image: "https://i.ibb.co/99pdcqjg/The-Beatles.jpg",
+  image: "watermarked_image.php?img=The Beatles.jpg",
   price: "₱3,600",
   originalPrice: "₱6,000",
   discount: "-40%",
@@ -469,7 +494,7 @@ const products = {
 },
 43: {
   name: "Sabrina Karpintero",
-  image: "https://i.ibb.co/KcWsL8cN/Sabrina.jpg",
+  image: "watermarked_image.php?img=Sabrina Karpintero.jpg",
   price: "₱2,100",
   originalPrice: "₱5,250",
   discount: "-60%",
@@ -478,12 +503,32 @@ const products = {
 },
 44: {
   name: "Take A Bite",
-  image: "https://i.ibb.co/Z1XvzpnP/Take-A-Bite.jpg",
+  image: "watermarked_image.php?img=Take A Bite.jpg",
   price: "₱2,800",
   originalPrice: "₱7,000",
   discount: "-60%",
   description: "Tantalizing cover art with attitude.",
   reviews: []
+},
+ 
+45: {
+    name: "Depressed Swine",
+  image: "watermarked_image.php?img=images/art_6836a782113de5.78697428.jpg",
+  price: "₱5,000",
+  originalPrice: "₱6,000",
+  discount: "-20%",
+  description: "When the feeling of burden falls into heavy heart. The stomach wants to eat Korean BBQ, Samgyupsal pork is the way",
+  reviews: []
 }
 
-};
+ 
+
+ 
+
+
+ };
+
+// Load auth modal
+const script = document.createElement('script');
+script.src = 'js/auth-modal.js';
+document.head.appendChild(script);

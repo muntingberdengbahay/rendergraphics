@@ -189,13 +189,18 @@ function saveImage() {
   mergeCanvas.height = drawingBoard.clientHeight;
   const mergeCtx = mergeCanvas.getContext('2d');
 
+  // Fill background white before drawing layers to remove transparency
+  mergeCtx.fillStyle = '#fff';  // white background
+  mergeCtx.fillRect(0, 0, mergeCanvas.width, mergeCanvas.height);
+
+  // Draw all layers on top
   layers.forEach(({ canvas }) => {
     mergeCtx.drawImage(canvas, 0, 0);
   });
 
   const link = document.createElement('a');
-  link.download = `drawing_${Date.now()}.png`;
-  link.href = mergeCanvas.toDataURL('image/png');
+  link.download = `drawing_${Date.now()}.jpg`; // save as .jpg
+  link.href = mergeCanvas.toDataURL('image/jpeg', 1.0); // quality 1.0 max
   link.click();
 }
 

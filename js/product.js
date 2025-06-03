@@ -29,57 +29,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// NADAGDAG 
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const productCard = this.closest('.product-card');
+        const productId = productCard.dataset.productId;
+        const productName = productCard.querySelector('h4').textContent;
+        const productPrice = parseFloat(productCard.querySelector('.current-price').textContent.replace(/₱|,/g, ''));
+        const productImage = productCard.querySelector('img').src; // Get product image
+        const productQuantity = 1; // Default quantity
+        // Send product data to the server
+        fetch('cart.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                product_id: productId,
+                product_name: productName,
+                product_price: productPrice,
+                product_image: productImage, // Send image path
+                product_quantity: productQuantity // Ensure this is sent
+            })
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Optional: Handle response
+            alert('Product added to cart!');
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+
+// HANGGANG DITO
+
+// Load auth modal
+const script = document.createElement('script');
+script.src = 'js/auth-modal.js';
+document.head.appendChild(script);
 
 // product.js - Add this at the bottom
 
 // Sorting Functionality
-/*
-function initializeSorting() {
-    const sortSelect = document.getElementById('sort-options');
-    if (!sortSelect) return; // Exit if not on a page with sorting
 
-    sortSelect.addEventListener('change', function () {
-        const productGrid = document.querySelector('.products-grid');
-        if (!productGrid) return;
-
-        const products = Array.from(productGrid.querySelectorAll('.product-card'));
-
-        // Price parsing utility
-        const parsePrice = (elem) =>
-            parseInt(elem.querySelector('.current-price').textContent.replace(/[^\d]/g, ''), 10);
-
-        // Sorting logic
-        products.sort((a, b) => {
-            const aName = a.querySelector('h4').textContent.toLowerCase();
-            const bName = b.querySelector('h4').textContent.toLowerCase();
-            const aPrice = parsePrice(a);
-            const bPrice = parsePrice(b);
-
-            switch (this.value) {
-                case 'price-low':
-                    return aPrice - bPrice;
-                case 'price-high':
-                    return bPrice - aPrice;
-                case 'name-asc':
-                    return aName.localeCompare(bName);
-                case 'name-desc':
-                    return bName.localeCompare(aName);
-                default:
-                    return 0; // Keep original order
-            }
-        });
-
-        // Clear the grid
-        productGrid.innerHTML = '';
-
-        // Re-append all sorted products at once
-        productGrid.append(...products);
-    });
-}
-
-// Initialize when DOM loads
-document.addEventListener('DOMContentLoaded', () => {
-    initializeSorting();
-});
-
-*/
